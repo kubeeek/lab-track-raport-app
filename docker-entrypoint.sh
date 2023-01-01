@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Waiting"
-./wait-for-it.sh "db:3306" python manage.py migrate
+./wait-for-it.sh "db:3306"
 
 echo "Apply database migrations"
 python manage.py migrate
