@@ -1,0 +1,9 @@
+[
+  {
+    "model": "webapp.TestingFacility",
+    "pk": 1,
+    "fields": {
+      "place_code": "ABC321"
+    }
+  }
+]
