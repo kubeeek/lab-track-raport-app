@@ -1,0 +1,35 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <h1>Lista próbek</h1>
+    <table class="table table-striped table-hover align-middle">
+        <thead style="border-bottom: 1px solid black">
+        <tr>
+            <th>ID</th>
+            <th>Kod</th>
+            <th>Opis</th>
+            <th>Data przydatności</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entry in testsample_list %}
+            <tr>
+                <th scope="row">{{ entry.pk }}</th>
+                <td>{{ entry.sample_code }}</td>
+                <td>{{ entry.description|truncatewords:20 }}</td>
+                <td>{{ entry.expiration_date }}</td>
+                <td>
+                    {% url 'testsample_detail' entry.pk as detail_url %}
+                    {% bootstrap_button "Szczegóły" href=detail_url extra_classes="btn-sm" %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    {% if 'update' in request.path %}
+        <h1>Edytowanie próbki #{{ testlabel.id }}</h1>
+    {% else %}
+        <h1>Dodawanie próbki dla badania #{{ parent.id }}</h1>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button "Dodaj badanie" button_type="submit" %}
+    </form>
+{% endblock %}

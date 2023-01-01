@@ -1,0 +1,52 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <h1>Badanie #{{ testlabel.pk }}</h1>
+    <div>
+        <span class="fw-bold">Próbka: </span> <a href="/essa">{{ testlabel.parameter_name }}</a>
+    </div>
+    <div>
+        <span class="fw-bold">Parametr: </span> {{ testlabel.parameter_name }}
+    </div>
+    <div>
+        <span class="fw-bold">Oznakowanie: </span> {{ testlabel.marking }}
+    </div>
+    <div>
+        <span class="fw-bold">Wartość: </span> {{ testlabel.marking }}
+    </div>
+    <div>
+        <span class="fw-bold">Specyfikacja: </span> {{ testlabel.marking }}
+    </div>
+    <div>
+        <span class="fw-bold">Rozporządzenie: </span> {{ testlabel.marking }}
+    </div>
+    <div>
+        <span class="fw-bold">Wynik badania: </span> {{ testlabel.marking }}
+    </div>
+     <div>
+        <span class="fw-bold">Licza próbek: </span> {{ testlabel.marking }}
+    </div>
+    <div>
+        <span class="fw-bold">Data rozpoczęcia: </span> {{ testlabel.marking }}
+    </div>
+    <div>
+        <span class="fw-bold">Data zakończenie: </span> {{ testlabel.marking }}
+    </div>
+    <div>
+        <span class="fw-bold">Status metody: </span> {{ testlabel.marking }}
+    </div>
+    <div>
+        <span class="fw-bold">Niepewność: </span> {{ testlabel.marking }}
+    </div>
+    <div class="mt-2 d-flex justify-content-end">
+        {% url 'testlabel_update' testlabel.pk as update_url %}
+
+        {% bootstrap_button "Edytuj" button_type="link" href=update_url extra_classes="me-1" %}
+        {% bootstrap_button "Usuń" button_type="submit" extra_classes="btn-danger" %}
+    </div>
+{% endblock %}

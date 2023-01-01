@@ -1,0 +1,64 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Próbka #{{ testsample.id }} </h1>
+        <h4>Dodano: 2022-21-30</h4>
+        <div><span class="fw-bold">Kod próbki: </span> {{ testsample.sample_code }}</div>
+        <div><span class="fw-bold">Placówka źródłowa:</span> {{ testsample.source_facility }}</div>
+        <div><span class="fw-bold">Nazwa klienta:</span> {{ testsample.customer_name }}</div>
+        <div><span class="fw-bold">Opis próbki:</span> {{ testsample.description }}</div>
+        <div><span class="fw-bold">Data przyjęcia:</span> {{ testsample.admission_date }}</div>
+        <div><span class="fw-bold">Data przydatności:</span> {{ testsample.expiration_date }}</div>
+        {% if testsample.expiration_date_optional|length > 1 %}
+            <div>❗<span class="fw-bold">Komentarz dla daty przydatności: </span>{{ testsample.admission_date }}</div>
+        {% endif %}
+        <div><span class="fw-bold">Data końca badań:</span> {{ testsample.test_end_date }}</div>
+        <div><span class="fw-bold">Rozmiar próbki:</span> {{ testsample.test_end_date }}</div>
+        <div><span class="fw-bold">Analiza odwoławcza:</span> {{ testsample.appeal_test|yesno:"Tak,Nie," }}</div>
+        <div><span class="fw-bold">Rodzaj kontroli:</span> {{ testsample.control_type }}</div>
+        <div><span class="fw-bold">Rodzaj próbki:</span> {{ testsample.sample_type }}</div>
+    </div>
+    <div class="d-flex flex-column mt-4">
+        <h1>Lista badań</h1>
+        {% if testlabel_list|length < 1 %}
+            <p>Brak badań.</p>
+        {% else %}
+            <table class="table table-striped table-hover table-sm align-middle">
+                <thead style="border-bottom: 1px solid black">
+                <tr>
+                    <th>Identyfikator</th>
+                    <th>Parametr</th>
+                    <th>Wykonane</th>
+                    <th>Wynik</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entry in testlabel_list %}
+                    <tr>
+                        <th scope="row">{{ entry.pk }}</th>
+                        <td>{{ entry.parameter_name }}</td>
+                        <td>{{ entry.done|yesno:"Tak,Nie," }}</td>
+                        <td>Pozytywny</td>
+                        <td>
+                            {% url 'testlabel_detail' entry.pk as detail_url %}
+                            {% bootstrap_button "Szczegóły" href=detail_url extra_classes="btn-sm" %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+        {% url 'add_related_testlabel' testsample.pk as href_url %}
+        {% bootstrap_button "Dodaj badanie" button_type="link" extra_classes="align-self-center" href=href_url %}
+
+    </div>
+
+{% endblock %}

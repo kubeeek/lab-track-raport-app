@@ -1,0 +1,15 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <h1>Dodawanie próbki</h1>
+    <form action="/test-sample/add" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button "Dodaj próbkę" button_type="submit" %}
+    </form>
+{% endblock %}
