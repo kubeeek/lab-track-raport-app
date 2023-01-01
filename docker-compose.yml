@@ -1,0 +1,26 @@
+services:
+  db:
+    image: mysql/mysql-server:latest
+    environment:
+      - MYSQL_DATABASE=mariadb
+      - MYSQL_USER=mariadb
+      - MYSQL_PASSWORD=mariadb
+      - MYSQL_PORT=3306
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+  web:
+    build: .
+    command: ./docker-entrypoint.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - MYSQL_DATABASE=mariadb
+      - MYSQL_USER=mariadb
+      - MYSQL_PASSWORD=mariadb
+      - MYSQL_PORT=3306
+    depends_on:
+      - db
