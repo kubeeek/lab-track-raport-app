@@ -14,6 +14,8 @@ urlpatterns = [
 
     path('test-sample/export', views.TestSampleExportView.as_view(), name="testsample_export"),
     # ex: /test-label/1/
+    path('test-label/<int:pk>/', views.TestLabelDetailView.as_view(), name="testlabel_detail"),
+    path('test-label/<int:pk>/update', views.TestLabelUpdateView.as_view(), name="testlabel_update"),
 
     # path('test-label/add', views.TestLabelCreateView.as_view())
 ]

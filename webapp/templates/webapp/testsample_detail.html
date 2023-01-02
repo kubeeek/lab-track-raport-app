@@ -21,9 +21,12 @@
         <div><span class="fw-bold">Data końca badań:</span> {{ testsample.test_end_date }}</div>
         <div><span class="fw-bold">Rozmiar próbki:</span> {{ testsample.test_end_date }}</div>
         <div><span class="fw-bold">Analiza odwoławcza:</span> {{ testsample.appeal_test|yesno:"Tak,Nie," }}</div>
-        <div><span class="fw-bold">Rodzaj kontroli:</span> {{ testsample.control_type }}</div>
+        <div><span class="fw-bold">Stan próbki:</span> {{ testsample.sample_condition }}</div>
         <div><span class="fw-bold">Rodzaj próbki:</span> {{ testsample.sample_type }}</div>
+        <div><span class="fw-bold">Status metody:</span> {{ testsample.sample_method }}</div>
+
     </div>
+
     <div class="d-flex flex-column mt-4">
         <h1>Lista badań</h1>
         {% if testlabel_list|length < 1 %}
@@ -44,8 +47,18 @@
                     <tr>
                         <th scope="row">{{ entry.pk }}</th>
                         <td>{{ entry.parameter_name }}</td>
-                        <td>{{ entry.done|yesno:"Tak,Nie," }}</td>
-                        <td>Pozytywny</td>
+                        <td class="fw-bold">
+                            {% if entry.is_done %}
+                                <span class="text-success">
+                                Tak
+                                </span>
+                            {% else %}
+                                <span class="text-danger">
+                                Nie
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td>{{ entry.test_result }}</td>
                         <td>
                             {% url 'testlabel_detail' entry.pk as detail_url %}
                             {% bootstrap_button "Szczegóły" href=detail_url extra_classes="btn-sm" %}

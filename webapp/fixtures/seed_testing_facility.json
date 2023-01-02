@@ -3,7 +3,8 @@
     "model": "webapp.TestingFacility",
     "pk": 1,
     "fields": {
-      "place_code": "ABC321"
+      "name": "WJHRS",
+      "address": "Kraków, Papierowa 22"
     }
   }
 ]

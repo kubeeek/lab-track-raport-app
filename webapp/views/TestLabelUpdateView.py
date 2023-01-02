@@ -1,9 +1,10 @@
 from django.views.generic.edit import UpdateView
 
+from webapp.forms import TestLabelForm
 from webapp.models import TestLabel
-from webapp.forms import TestSampleUpdateForm
+from webapp.views.common import OperationSuccessMessageViewMixin
 
-class TestLabelUpdateView(UpdateView):
+
+class TestLabelUpdateView(OperationSuccessMessageViewMixin, UpdateView):
     model = TestLabel
-
-    fields = ['done', 'parameter_name']
+    form_class = TestLabelForm

@@ -1,24 +1,21 @@
-from bootstrap_datepicker_plus.widgets import DatePickerInput
+import datetime
+
 from django.views.generic import CreateView
 
+from webapp.forms import TestSampleForm
 from webapp.models import TestSample
+from webapp.views.common import OperationSuccessMessageViewMixin
 
-
-class TestSampleCreateView(CreateView):
-    fields = '__all__'
+class TestSampleCreateView(OperationSuccessMessageViewMixin, CreateView):
     model = TestSample
+    form_class = TestSampleForm
 
+    def get_initial(self):
+        initial = super().get_initial()
 
-    def get_form(self):
-        form = super().get_form()
+        initial['admission_date'] = datetime.date.today()
 
-        for key in form.fields.keys():
-            if 'date' in key and 'optional' not in key:
-                form.fields[key].widget = DatePickerInput()
-
-        form.fields["description"].widget.attrs['rows'] = 5
-        form.fields['expiration_date_optional'].widget.attrs['rows'] = 5
-        return form
+        return initial
 
     def get_context_data(self, **kwargs):
         context = super(TestSampleCreateView, self).get_context_data(**kwargs)

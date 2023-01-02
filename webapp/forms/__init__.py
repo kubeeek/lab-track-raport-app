@@ -1,2 +1,2 @@
-from .TestSampleForm import TestSampleFormset
-from .TestLabelForm import TestSampleUpdateForm
+from .TestLabelForm import TestLabelForm
+from .TestSampleForm import TestSampleForm

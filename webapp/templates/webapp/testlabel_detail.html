@@ -11,42 +11,51 @@
         <span class="fw-bold">Próbka: </span> <a href="/essa">{{ testlabel.parameter_name }}</a>
     </div>
     <div>
-        <span class="fw-bold">Parametr: </span> {{ testlabel.parameter_name }}
+        <span class="fw-bold">Nazwa parametru: </span> {{ testlabel.parameter_name }}
     </div>
     <div>
-        <span class="fw-bold">Oznakowanie: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Oznakowanie: </span> {{ testlabel.labeling }}
     </div>
     <div>
-        <span class="fw-bold">Wartość: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Specyfikacja: </span> {{ testlabel.specification }}
     </div>
     <div>
-        <span class="fw-bold">Specyfikacja: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Rozporządzenie: </span> {{ testlabel.regulation }}
     </div>
     <div>
-        <span class="fw-bold">Rozporządzenie: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Licza próbek: </span> {{ testlabel.sample_amount }}
     </div>
     <div>
-        <span class="fw-bold">Wynik badania: </span> {{ testlabel.marking }}
-    </div>
-     <div>
-        <span class="fw-bold">Licza próbek: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Wynik badania: </span> {{ testlabel.test_result }}
     </div>
     <div>
-        <span class="fw-bold">Data rozpoczęcia: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Badanie wykonane: </span> {{ testlabel.is_done|yesno:"Tak,Nie," }}
     </div>
     <div>
-        <span class="fw-bold">Data zakończenie: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Data rozpoczęcia: </span> {{ testlabel.start_date }}
     </div>
     <div>
-        <span class="fw-bold">Status metody: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Data zakończenie: </span> {{ testlabel.end_date }}
     </div>
     <div>
-        <span class="fw-bold">Niepewność: </span> {{ testlabel.marking }}
+        <span class="fw-bold">Status metody: </span> {{ testlabel.method_status }}
+    </div>
+    <div>
+        <span class="fw-bold">Niepewność: </span> {{ testlabel.margin }}
+    </div>
+    <div>
+        <span class="fw-bold">LOD: </span> {{ testlabel.LOD }}
+    </div>
+    <div>
+        <span class="fw-bold">Niepewność: </span> {{ testlabel.LOQ }}
     </div>
     <div class="mt-2 d-flex justify-content-end">
         {% url 'testlabel_update' testlabel.pk as update_url %}
+        {% url 'testsample_detail' testlabel.test_sample.pk as parent_url %}
 
+        {% bootstrap_button "Przejdź do badania" button_type="link" href=parent_url extra_classes="me-1" %}
         {% bootstrap_button "Edytuj" button_type="link" href=update_url extra_classes="me-1" %}
+
         {% bootstrap_button "Usuń" button_type="submit" extra_classes="btn-danger" %}
     </div>
 {% endblock %}

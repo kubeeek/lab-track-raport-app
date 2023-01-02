@@ -1,24 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <div class="container-md">
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Główna</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'testsample_add' %}">Dodaj próbkę</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Przeglądaj
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{% url 'testsample_list' %}">Próbki</a></li>
-                        <li><a class=" dropdown-item" href="#">Badania</a></li>
-                    </ul>
-                </li>
-            </ul>
+            {% with request.resolver_match.url_name as url_name %}
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {% if url_name == 'testsample_add' %}active{% endif %}" aria-current="page"
+                           href="{% url 'testsample_add' %}">Dodaj próbkę</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Przeglądaj
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item {% if url_name == 'testsample_list' %}active{% endif %}"
+                                   href="{% url 'testsample_list' %}">Próbki</a></li>
+                            <li><a class="dropdown-item"
+                                   href="#">Raporty</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% endwith %}
         </div>
     </div>
 </nav>

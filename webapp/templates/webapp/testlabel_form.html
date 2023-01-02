@@ -7,14 +7,19 @@
 
 {% block content %}
     {% if 'update' in request.path %}
-        <h1>Edytowanie próbki #{{ testlabel.id }}</h1>
+        <h1>Edytowanie badania</h1>
     {% else %}
-        <h1>Dodawanie próbki dla badania #{{ parent.id }}</h1>
+        <h1>Dodawanie badania dla próbki #{{ parent.id }}</h1>
     {% endif %}
 
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        {% bootstrap_button "Dodaj badanie" button_type="submit" %}
+
+        <div class="d-flex justify-content-end">
+            {% bootstrap_button "Zatwierdź" button_type="submit" %}
+            {% url 'test_sample_detail' testlabel.test_sample as back_url %}
+            {% bootstrap_button "Odrzuć i cofnij" button_type="link" extra_classes="btn-warning ms-1" href=back_url %}
+        </div>
     </form>
 {% endblock %}

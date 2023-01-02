@@ -1,9 +1,26 @@
 from django.db import models
+from django.shortcuts import redirect
 
 from webapp.models import TestSample
 
 
 class TestLabel(models.Model):
-    done = models.BooleanField(default=False)
+    test_sample = models.ForeignKey(TestSample, on_delete=models.PROTECT, editable=False, default=None)
+
+    is_done = models.BooleanField(default=False)
     parameter_name = models.CharField(max_length=128)
-    test_sample = models.ForeignKey(TestSample, on_delete=models.PROTECT, default=None)
+    labeling = models.CharField(max_length=255)
+    specification = models.CharField(max_length=255)
+    # rozporządzenie ?
+    regulation = models.CharField(max_length=255)
+    sample_amount = models.IntegerField()
+    test_result = models.CharField(max_length=255)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    method_status = models.CharField(max_length=255)
+    margin = models.CharField(max_length=255)
+    LOD = models.CharField(max_length=255)
+    LOQ = models.CharField(max_length=255)
+
+    def get_absolute_url(self):
+        return "/test-label/%i/" % self.id
