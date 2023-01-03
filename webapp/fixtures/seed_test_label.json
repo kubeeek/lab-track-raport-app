@@ -1,0 +1,22 @@
+[
+    {
+    "model": "webapp.testlabel",
+    "pk": 1,
+    "fields": {
+      "test_sample": 1,
+      "is_done": false,
+      "parameter_name": "Parametr X",
+      "labeling": "Brak",
+      "specification": "Specyfikacja 1",
+      "regulation": "Placeholder",
+      "sample_amount": 2,
+      "test_result": "Pozytywny",
+      "start_date": "2023-01-03",
+      "end_date": "2023-01-04",
+      "method_status": "1",
+      "margin": "Brak",
+      "LOD": "2.2",
+      "LOQ": "3.3"
+    }
+  }
+]
