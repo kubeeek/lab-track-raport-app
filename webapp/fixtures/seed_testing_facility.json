@@ -6,5 +6,13 @@
       "name": "WJHRS",
       "address": "Kraków, Papierowa 22"
     }
+  },
+    {
+    "model": "webapp.TestingFacility",
+    "pk": 2,
+    "fields": {
+      "name": "WJHRS",
+      "address": "Warszawa, Kartonowa 23"
+    }
   }
 ]

@@ -1,0 +1,40 @@
+[
+  {
+    "model": "webapp.testsample",
+    "pk": 1,
+    "fields": {
+      "sample_code": "ABC321",
+      "source_facility": 1,
+      "customer_name": "WJHRS, Kraków, Papierowa 22",
+      "description": "Przykładowy opis",
+      "admission_date": "2023-01-01",
+      "expiration_date": "2023-01-07",
+      "expiration_date_optional": "Spożyć w ciągu 5 dni od otwarcia",
+      "test_end_date": "2023-01-07",
+      "sample_size": "1g",
+      "appeal_test": true,
+      "sample_condition": "Bez zastrzezeń",
+      "sample_type": "T2",
+      "sample_method": "T1"
+    }
+  },
+  {
+    "model": "webapp.testsample",
+    "pk": 2,
+    "fields": {
+      "sample_code": "CDA321",
+      "source_facility": 1,
+      "customer_name": "WJHRS, Kraków, Papierowa 22",
+      "description": "-",
+      "admission_date": "2023-01-02",
+      "expiration_date": "2023-01-02",
+      "expiration_date_optional": "",
+      "test_end_date": "2023-01-02",
+      "sample_size": "1g",
+      "appeal_test": false,
+      "sample_condition": "Bez zastrzeżeń",
+      "sample_type": "T2",
+      "sample_method": "T2"
+    }
+  }
+]
