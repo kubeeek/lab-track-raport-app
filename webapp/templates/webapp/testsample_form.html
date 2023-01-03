@@ -18,7 +18,7 @@
 
 {% block content %}
     <h1>Dodawanie próbki</h1>
-    <form action="/test-sample/add" method="post">
+    <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="d-flex justify-content-end">

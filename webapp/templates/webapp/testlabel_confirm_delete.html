@@ -1,0 +1,18 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <form method="post">{% csrf_token %}
+        <p>Na pewno chcesz usunąć "{{ object }}"?</p>
+        {% bootstrap_form form %}
+        <div class="d-flex justify-content-end">
+            {% bootstrap_button "Potwierdź" button_type="submit" %}
+            {% url 'testlabel_detail' object.pk as back_url %}
+            {% bootstrap_button "Cofnij" button_type="link" href=back_url extra_classes="btn-warning ms-1" %}
+        </div>
+    </form>
+{% endblock %}

@@ -26,7 +26,7 @@
                 <td>{{ entry.expiration_date }}</td>
                 <td>
                     {% url 'testsample_detail' entry.pk as detail_url %}
-                    {% bootstrap_button "Szczegóły" href=detail_url extra_classes="btn-sm" %}
+                    {% bootstrap_button "Szczegóły" button_type="link" href=detail_url extra_classes="btn-sm" %}
                 </td>
             </tr>
         {% endfor %}

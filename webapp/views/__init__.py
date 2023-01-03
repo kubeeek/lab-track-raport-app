@@ -1,9 +1,10 @@
-
 from .TestLabelCreateView import TestLabelCreateView
-from .TestSampleCreateView import TestSampleCreateView
-from .TestSampleDetailView import TestSampleDetailView
-from .TestSampleListView import TestSampleListView
 from .TestLabelDetailView import TestLabelDetailView
 from .TestLabelUpdateView import TestLabelUpdateView
-
+from .TestSampleCreateView import TestSampleCreateView
+from .TestSampleDetailView import TestSampleDetailView
 from .TestSampleExportView import TestSampleExportView
+from .TestSampleListView import TestSampleListView
+from .TestSampleUpdateView import TestSampleUpdateView
+from .TestSampleDeleteView import TestSampleDeleteView
+from .TestLabelDeleteView import TestLabelDeleteView
