@@ -54,7 +54,7 @@
         {% url 'testsample_detail' testlabel.test_sample.pk as parent_url %}
         {% url 'testlabel_delete' testlabel.pk as delete_url %}
 
-        {% bootstrap_button "Przejdź do badania" button_type="link" href=parent_url extra_classes="me-1" %}
+        {% bootstrap_button "Przejdź do próbki" button_type="link" href=parent_url extra_classes="me-1" %}
         {% bootstrap_button "Edytuj" button_type="link" href=update_url extra_classes="me-1" %}
 
         {% bootstrap_button "Usuń" button_type="link" href=delete_url extra_classes="btn-danger" %}
