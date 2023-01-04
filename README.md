@@ -4,7 +4,8 @@ There are two ways to run the app: using Docker or locally on your machine.
 
 ## Using Docker
 1. Make sure you have Docker installed.
-2. Run this command in the root directory of a project, enter: ``docker-compose up``
+2. Make sure that files `wait-for-it.sh` and `docker_entrypoint.sh` have execution permissions.
+3. Run this command in the root directory of a project, enter: ``docker-compose up``
 
 ## Running it locally
 1. Before beginning, ensure that you have Python 3 and pip installed on your machine
