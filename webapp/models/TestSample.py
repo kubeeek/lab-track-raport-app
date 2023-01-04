@@ -8,7 +8,7 @@ class TestSample(models.Model):
     description = models.TextField()
     admission_date = models.DateField()
     expiration_date = models.DateField()
-    expiration_date_optional = models.TextField()
+    expiration_date_optional = models.TextField(default=None, null=True, blank=True)
     test_end_date = models.DateField()
     sample_size = models.CharField(max_length=32)
     appeal_test = models.BooleanField()
