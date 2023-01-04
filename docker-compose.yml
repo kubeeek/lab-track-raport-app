@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   db:
     image: mysql/mysql-server:latest
@@ -12,9 +14,6 @@ services:
       - 3306
   web:
     build: .
-    command: ./docker-entrypoint.sh
-    volumes:
-      - .:/code
     ports:
       - "8000:8000"
     environment:
