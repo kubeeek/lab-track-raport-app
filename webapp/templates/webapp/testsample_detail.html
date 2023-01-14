@@ -27,8 +27,8 @@
 
     </div>
     <div class="mt-2 d-flex justify-content-end">
-        {% url 'testsample_update' testsample.pk as update_url %}
-        {% url 'testsample_delete' testsample.pk as delete_url %}
+        {% url 'test_sample_update' testsample.pk as update_url %}
+        {% url 'test_sample_delete' testsample.pk as delete_url %}
 
         {% bootstrap_button "Edytuj" button_type="link" href=update_url extra_classes="me-1" %}
 
@@ -67,7 +67,7 @@
                         </td>
                         <td>{{ entry.test_result }}</td>
                         <td>
-                            {% url 'testlabel_detail' entry.pk as detail_url %}
+                            {% url 'test_label_detail' entry.pk as detail_url %}
                             {% bootstrap_button "Szczegóły" href=detail_url extra_classes="btn-sm" %}
                         </td>
                     </tr>
@@ -76,7 +76,7 @@
             </table>
         {% endif %}
 
-        {% url 'add_related_testlabel' testsample.pk as href_url %}
+        {% url 'add_related_test_label' testsample.pk as href_url %}
         {% bootstrap_button "Dodaj badanie" button_type="link" extra_classes="align-self-center" href=href_url %}
 
     </div>
