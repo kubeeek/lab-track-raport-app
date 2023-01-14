@@ -1,0 +1,16 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <h1>Eksportowanie danych ({{ header }})</h1>
+    <p>Wybierz przedział czasowy eksportowanych danych.</p>
+
+    <form action="{{ submit_url }}" method="get">
+        {% bootstrap_form form %}
+        {% bootstrap_button "Eksportuj" %}
+    </form>
+{% endblock %}

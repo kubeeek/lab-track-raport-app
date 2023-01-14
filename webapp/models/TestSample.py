@@ -1,6 +1,8 @@
 from django.db import models
 
 from webapp.models import TestingFacility
+
+
 class TestSample(models.Model):
     sample_code = models.CharField(max_length=16)
     source_facility = models.ForeignKey(TestingFacility, on_delete=models.PROTECT, default=None)
@@ -30,9 +32,12 @@ class TestSample(models.Model):
         choices=sample_type_choices,
         default='T2'
     )
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['id']
+        get_latest_by = ['created_at']
+
     def get_absolute_url(self):
         return "/test-sample/%i/" % self.id
 
@@ -46,7 +51,6 @@ class TestSample(models.Model):
                 continue
             data.append(self.serializable_value(field))
         return data
-
 
     def __str__(self):
         return f'Próbka {self.sample_code} nr. {self.id}'

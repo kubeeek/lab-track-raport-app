@@ -1,16 +1,30 @@
+from django.db import models
 from django.db import transaction
 from django.views import View
 
-from webapp.models import TestSample
 from webapp.utils.writers import CSVStream, CSVIterableWrapper
 
 
-class ExportView(View):
-    def get(self, request, *args, **kwargs):
+class ModelWithTimestamp(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
 
+
+class ExportView(View):
+    fields = []
+    model = ModelWithTimestamp
+    filename = None
+
+    def get(self, request, filter_params=None):
 
         with transaction.atomic():
-            iterator = self.model.objects.iterator()
+            if filter_params is None:
+                queryset = self.model.objects
+            else:
+                queryset = self.model.objects.filter(
+                    created_at__range=[filter_params['from_date'], filter_params['to_date']]
+                )
+
+            iterator = queryset.iterator()
 
             counter = CSVIterableWrapper(self.fields, iterator)
             csv_stream = CSVStream()
