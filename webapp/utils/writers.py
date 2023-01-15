@@ -17,6 +17,7 @@ class CSVIterableWrapper:
 
         self.returnedFields = True
 
+        # byte to mark it is utf8 encoded csv file
         self.fields[0] = '\ufeff' + self.fields[0]
 
         return self.fields
