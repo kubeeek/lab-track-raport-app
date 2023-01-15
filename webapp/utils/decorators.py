@@ -3,8 +3,8 @@ from functools import wraps
 
 def parse_timestamp_range(model):
 
-    def decorator(function):
-        @wraps(function)
+    def decorator(get_function):
+        @wraps(get_function)
         def wrapper(*args, **kwargs):
             from_date = args[1].GET.get("from_date", "")
             to_date = args[1].GET.get("to_date", "")
@@ -15,7 +15,7 @@ def parse_timestamp_range(model):
             if to_date == '':
                 to_date = None
 
-            return function(*args, from_date, to_date, **kwargs)
+            return get_function(*args, from_date, to_date, **kwargs)
 
         return wrapper
 
