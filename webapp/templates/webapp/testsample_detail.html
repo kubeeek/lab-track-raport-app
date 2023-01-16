@@ -27,13 +27,57 @@
 
     </div>
     <div class="mt-2 d-flex justify-content-end">
-        {% url 'test_sample_update' testsample.pk as update_url %}
-        {% url 'test_sample_delete' testsample.pk as delete_url %}
+        {% url 'testsample_update' testsample.pk as update_url %}
+        {% url 'testsample_delete' testsample.pk as delete_url %}
+        {% url 'add_related_report' testsample.pk as report_url %}
 
         {% bootstrap_button "Edytuj" button_type="link" href=update_url extra_classes="me-1" %}
-
+        {% if has_report is False %}
+            {% bootstrap_button "Generuj raport" button_type="link" href=report_url extra_classes="me-1" %}
+        {% endif %}
         {% bootstrap_button "Usuń" button_type="link" href=delete_url extra_classes="btn-danger" %}
     </div>
+
+    {% if has_report %}
+        {% with report=testsample.report %}
+
+            <div class="d-flex flex-column mt-4">
+                <h1>Sprawozdanie z badań</h1>
+                <table class="table table-striped table-hover table-sm align-middle">
+                    <thead style="border-bottom: 1px solid black">
+                    <tr>
+                        <th>Data</th>
+                        <th>Wykonali</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <td>
+                        {{ report.created_at }}
+                    </td>
+                    <td>
+                        {% for entry in report.get_formatted_author_list %}
+                            {{ entry }}
+                            {% if forloop.counter is not report.get_formatted_author_list|length %}
+                                ,
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        {% bootstrap_button "Zobacz raport" href=detail_url extra_classes="btn-sm" %}
+                        {% bootstrap_button "Pobierz" href=detail_url extra_classes="btn-sm" %}
+
+                    </td>
+                    </tbody>
+                </table>
+            </div>
+        {% endwith %}
+    {% endif %}
+
     <div class="d-flex flex-column mt-4">
         <h1>Lista badań</h1>
         {% if testlabel_list|length < 1 %}

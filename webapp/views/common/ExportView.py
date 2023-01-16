@@ -2,12 +2,8 @@ from django.db import models
 from django.db import transaction
 from django.views import View
 
+from webapp.models.common import ModelWithTimestamp
 from webapp.utils.writers import CSVStream, CSVIterableWrapper
-
-
-class ModelWithTimestamp(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-
 
 class ExportView(View):
     fields = []

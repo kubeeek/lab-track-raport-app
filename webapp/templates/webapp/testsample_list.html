@@ -25,7 +25,7 @@
                 <td>{{ entry.description|truncatewords:20 }}</td>
                 <td>{{ entry.expiration_date }}</td>
                 <td>
-                    {% url 'test_sample_detail' entry.pk as detail_url %}
+                    {% url 'testsample_detail' entry.pk as detail_url %}
                     {% bootstrap_button "Szczegóły" button_type="link" href=detail_url extra_classes="btn-sm" %}
                 </td>
             </tr>

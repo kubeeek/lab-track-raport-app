@@ -10,3 +10,5 @@ from .TestSampleExportView import TestSampleExportView
 from .TestSampleListView import TestSampleListView
 from .TestSampleUpdateView import TestSampleUpdateView
 from .TestLabelExportFormView import TestLabelExportFormView
+
+from .TestSampleReport import *

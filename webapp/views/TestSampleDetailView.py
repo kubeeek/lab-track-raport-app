@@ -12,5 +12,6 @@ class TestSampleDetailView(DetailView):
         context = super().get_context_data(**kwargs)
 
         context['testlabel_list'] = TestLabel.objects.filter(test_sample=self.get_object())
+        context['has_report'] = hasattr(self.object, 'report')
 
         return context

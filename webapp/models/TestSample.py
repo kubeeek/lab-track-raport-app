@@ -1,9 +1,10 @@
 from django.db import models
 
 from webapp.models import TestingFacility
+from webapp.models.common import ModelWithTimestamp
 
 
-class TestSample(models.Model):
+class TestSample(ModelWithTimestamp):
     sample_code = models.CharField(max_length=16)
     source_facility = models.ForeignKey(TestingFacility, on_delete=models.PROTECT, default=None)
     customer_name = models.CharField(max_length=32)

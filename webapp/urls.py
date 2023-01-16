@@ -13,7 +13,9 @@ urlpatterns = [
     path('test-sample/<int:pk>/update', views.TestSampleUpdateView.as_view(), name="testsample_update"),
     path('test-sample/<int:pk>/delete', views.TestSampleDeleteView.as_view(), name="testsample_delete"),
 
+    # nested
     path('test-sample/<int:pk>/test-label/add', views.TestLabelCreateView.as_view(), name="add_related_testlabel"),
+    path('test-sample/<int:pk>/report/add', views.TestSampleReportCreateView.as_view(), name="add_related_report"),
 
     path('test-sample/export', views.TestSampleExportFormView.as_view(), name="testsample_export"),
     path('test-sample/export/download', views.TestSampleExportView.as_view(), name="testsample_export_download"),
@@ -26,5 +28,9 @@ urlpatterns = [
     path('test-label/export', views.TestLabelExportFormView.as_view(), name="testlabel_export"),
     path('test-sample/export/download', views.TestSampleExportView.as_view(), name="testlabel_export_download"),
 
+    # test-report
+    path('test-report/<int:pk>/download', views.TestSampleReportDownloadView.as_view(), name="report_download"),
+
     # path('test-label/add', views.TestLabelCreateView.as_view())
+
 ]
