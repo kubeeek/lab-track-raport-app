@@ -4,7 +4,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', lambda request: redirect('test_sample_create', permanent=True)),
+    path('', lambda request: redirect('testsample_create', permanent=True)),
 
     # ex: /test-sample/create/
     path('test-sample/create', views.TestSampleCreateView.as_view(), name="testsample_create"),

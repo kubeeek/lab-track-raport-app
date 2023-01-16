@@ -11,7 +11,7 @@
         {% bootstrap_form form %}
         <div class="d-flex justify-content-end">
             {% bootstrap_button "Potwierdź" button_type="submit" %}
-            {% url 'test_label_detail' object.pk as back_url %}
+            {% url 'testlabel_detail' object.pk as back_url %}
             {% bootstrap_button "Cofnij" button_type="link" href=back_url extra_classes="btn-warning ms-1" %}
         </div>
     </form>

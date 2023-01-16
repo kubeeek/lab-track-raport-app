@@ -18,7 +18,7 @@
 
         <div class="d-flex justify-content-end">
             {% bootstrap_button "Zatwierdź" button_type="submit" %}
-            {% url 'test_sample_detail' testlabel.test_sample as back_url %}
+            {% url 'testsample_detail' testlabel.test_sample as back_url %}
             {% bootstrap_button "Odrzuć i cofnij" button_type="link" extra_classes="btn-warning ms-1" href=back_url %}
         </div>
     </form>
