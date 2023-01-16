@@ -1,30 +1,21 @@
 from django.contrib import messages
 from django.db import IntegrityError
-from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import CreateView
 
 from webapp.forms import AuthorFormSet, TestSampleReportForm
-from webapp.models import TestSampleReport, TestSample
+from webapp.models import TestSampleReport
+from webapp.views.common import NestedCreateView
 
 
-class TestSampleReportCreateView(CreateView):
+class TestSampleReportCreateView(NestedCreateView):
     model = TestSampleReport
     form_class = TestSampleReportForm
 
-    def get_initial(self):
-        return {
-            'parent': TestSample.objects.get(pk=self.kwargs['pk'])
-        }
-
     def get_context_data(self, **kwargs):
-        try:
-            context = super().get_context_data(**kwargs)
-        except TestSample.DoesNotExist:
-            raise Http404
+        context = super().get_context_data(**kwargs)
 
-        context['parent'] = get_object_or_404(TestSample, pk=self.kwargs['pk'])
         context['authors_formset'] = AuthorFormSet()
 
         return context
@@ -49,9 +40,7 @@ class TestSampleReportCreateView(CreateView):
 
             authors.append({"first_name": first_name, "last_name": last_name})
 
-        parent = get_object_or_404(TestSample, pk=self.kwargs['pk'])
-        self.success_url = parent.get_absolute_url()
-        form.instance.test_sample = parent
+        form.instance.test_sample = self.get_parent_instance()
 
         obj_instance = form.save(commit=False)
         obj_instance.author = authors
@@ -60,7 +49,7 @@ class TestSampleReportCreateView(CreateView):
             obj_instance.save()
         except IntegrityError:
             messages.error(self.request, "Nie można stworzyć raportu. Dana próbka ma już przypisany raport.")
-            return redirect(reverse('testsample_detail', kwargs={'pk': parent.id}))
+            return redirect(reverse('testsample_detail', kwargs={'pk': self.parentInstance.id}))
 
         return HttpResponseRedirect(self.get_success_url())
 
