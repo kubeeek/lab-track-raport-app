@@ -1,8 +1,7 @@
 from functools import wraps
 
 
-def parse_timestamp_range(model):
-
+def parse_timestamp_range():
     def decorator(get_function):
         @wraps(get_function)
         def wrapper(*args, **kwargs):
