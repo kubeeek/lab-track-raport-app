@@ -4,13 +4,13 @@ from django.views.generic import CreateView
 
 from webapp.models import TestSample
 
-
+"""
+    Class for handling nested resources. Ensures that parent actually exist. If not, raises 404.
+    Ex. TestLabel and TestReport is nested resource of TestSample.
+"""
 class NestedCreateView(CreateView):
-
-    def __init__(self, **kwargs):
-        super().__init__(kwargs)
-        self.parentModel = None
-        self.parentInstance = None
+    parentModel = None
+    parentInstance = None
 
     def get_context_data(self, **kwargs):
         try:

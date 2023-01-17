@@ -1,9 +1,10 @@
 from django.db import models
 
 from webapp.models import TestSample
+from webapp.models.common import ModelWithTimestamp
 
 
-class TestLabel(models.Model):
+class TestLabel(ModelWithTimestamp):
     test_sample = models.ForeignKey(TestSample, on_delete=models.PROTECT, editable=False, default=None)
 
     is_done = models.BooleanField(default=False)

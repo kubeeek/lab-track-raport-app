@@ -7,9 +7,17 @@
 
 {% block content %}
 
-    {% url 'test_sample_detail' testlabel.test_sample.pk as parent_url %}
+    {% url 'testsample_detail' testlabel.test_sample.pk as parent_url %}
 
     <h1>Badanie #{{ testlabel.pk }}</h1>
+    <div>
+        <span class="fw-bold">Badanie wykonane: </span>
+        {% if testlabel.is_done %}
+            <span class="fw-bold text-success">Tak</span>
+        {% else  %}
+            <span class="fw-bold text-danger">Nie</span>
+        {% endif %}
+    </div>
     <div>
         <span class="fw-bold">Próbka: </span> <a href="{{ parent_url }}">{{ testlabel.test_sample }}</a>
     </div>
@@ -30,9 +38,6 @@
     </div>
     <div>
         <span class="fw-bold">Wynik badania: </span> {{ testlabel.test_result }}
-    </div>
-    <div>
-        <span class="fw-bold">Badanie wykonane: </span> {{ testlabel.is_done|yesno:"Tak,Nie," }}
     </div>
     <div>
         <span class="fw-bold">Data rozpoczęcia: </span> {{ testlabel.start_date }}

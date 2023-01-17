@@ -1,4 +1,4 @@
-from .ExportView import ExportView
+from .ExportDownloadView import ExportDownloadView
 from .OperationSuccessMessageViewMixin import OperationSuccessMessageViewMixin
 from .ExportFormView import ExportFormView
 from .NestedCreateView import NestedCreateView

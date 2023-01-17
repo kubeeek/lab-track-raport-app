@@ -10,9 +10,6 @@ class TestLabelCreateView(OperationSuccessMessageViewMixin, NestedCreateView):
 
     parentModel = TestSample
 
-    def __init__(self):
-        self.success_url = None
-
     def get_initial(self):
         return {
             'test_sample': self.parentModel.objects.get(pk=self.kwargs['pk'])

@@ -7,7 +7,7 @@ class TestSampleExportFormView(ExportFormView):
     def get_context_data(self, **kwargs):
         context = super(TestSampleExportFormView, self).get_context_data(**kwargs)
 
-        context['submit_url'] = reverse('test_sample_export_download')
+        context['submit_url'] = reverse('testsample_export_download')
         context['header'] = "Próbki"
 
         return context

@@ -18,7 +18,7 @@ urlpatterns = [
     path('test-sample/<int:pk>/report/add', views.TestSampleReportCreateView.as_view(), name="add_related_report"),
 
     path('test-sample/export', views.TestSampleExportFormView.as_view(), name="testsample_export"),
-    path('test-sample/export/download', views.TestSampleExportView.as_view(), name="testsample_export_download"),
+    path('test-sample/export/download', views.TestSampleExportDownloadView.as_view(), name="testsample_export_download"),
 
     # ex: /test-label/1/
     path('test-label/<int:pk>/', views.TestLabelDetailView.as_view(), name="testlabel_detail"),
@@ -26,10 +26,11 @@ urlpatterns = [
     path('test-label/<int:pk>/delete', views.TestLabelDeleteView.as_view(), name="testlabel_delete"),
 
     path('test-label/export', views.TestLabelExportFormView.as_view(), name="testlabel_export"),
-    path('test-sample/export/download', views.TestSampleExportView.as_view(), name="testlabel_export_download"),
+    path('test-label/export/download', views.TestLabelExportDownloadView.as_view(), name="testlabel_export_download"),
 
     # test-report
     path('test-report/<int:pk>/download', views.TestSampleReportDownloadView.as_view(), name="report_download"),
+    path('test-report/<int:pk>/update', views.TestSampleReportUpdateView.as_view(), name="report_update"),
 
     # path('test-label/add', views.TestLabelCreateView.as_view())
 

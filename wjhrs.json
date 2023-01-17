@@ -3,7 +3,7 @@
     "model": "webapp.TestingFacility",
     "pk": 1,
     "fields": {
-      "name": "WIJHRS w Białymstoku",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Białymstoku",
       "address": "ul. Antoniukowska 11, 15-740 Białystok"
     }
   },
@@ -11,7 +11,7 @@
     "model": "webapp.TestingFacility",
     "pk": 2,
     "fields": {
-      "name": "WIJHRS w Bydgoszczy",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Bydgoszczy",
       "address": "ul. Hetmańska 28, 85-039 Bydgoszcz"
     }
   },
@@ -19,7 +19,7 @@
     "model": "webapp.TestingFacility",
     "pk": 3,
     "fields": {
-      "name": "WIJHRS w Gdańsku z/s w Gdyni",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Gdańsku z/s w Gdyni",
       "address": "ul. Polska 15, 81-339 Gdynia"
     }
   },
@@ -27,7 +27,7 @@
     "model": "webapp.TestingFacility",
     "pk": 2,
     "fields": {
-      "name": "WIJHRS w Katowicach",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Katowicach",
       "address": "ul. Jana III Sobieskiego 10, 40-082 Katowice"
     }
   },
@@ -35,7 +35,7 @@
     "model": "webapp.TestingFacility",
     "pk": 3,
     "fields": {
-      "name": "WIJHRS w Kielcach",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Kielcach",
       "address": "Al. IX Wieków Kielc 3, 25-516 Kielce"
     }
   },
@@ -43,7 +43,7 @@
     "model": "webapp.TestingFacility",
     "pk": 4,
     "fields": {
-      "name": "WIJHRS w Krakowie",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Krakowie",
       "address": "ul. Ujastek 7, 31-752 Kraków"
     }
   },
@@ -51,7 +51,7 @@
     "model": "webapp.TestingFacility",
     "pk": 5,
     "fields": {
-      "name": "WIJHRS w Lublinie",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Lublinie",
       "address": "ul. Nowy Świat 3, 20-418 Lublin"
     }
   },
@@ -59,7 +59,7 @@
     "model": "webapp.TestingFacility",
     "pk": 6,
     "fields": {
-      "name": "WIJHRS w Łodzi",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Łodzi",
       "address": "ul. Rewolucji 1905 r. 59, 90-216 Łódź"
     }
   },
@@ -67,7 +67,7 @@
     "model": "webapp.TestingFacility",
     "pk": 7,
     "fields": {
-      "name": "WIJHRS w Olsztynie",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Olsztynie",
       "address": "ul. Szarych Szeregów 7, 10-079 Olsztyn"
     }
   },
@@ -75,7 +75,7 @@
     "model": "webapp.TestingFacility",
     "pk": 8,
     "fields": {
-      "name": "WIJHRS w Opolu",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Opolu",
       "address": "ul. Wrocławska 170, 45-835 Opole"
     }
   },
@@ -83,7 +83,7 @@
     "model": "webapp.TestingFacility",
     "pk": 9,
     "fields": {
-      "name": "WIJHRS w Poznaniu",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Poznaniu",
       "address": "ul. Kazimierza Wielkiego 24/26, 61-863 Poznań"
     }
   },
@@ -91,7 +91,7 @@
     "model": "webapp.TestingFacility",
     "pk": 10,
     "fields": {
-      "name": "WIJHRS w Rzeszowie",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Rzeszowie",
       "address": "ul. Lubelska 46, 35-233 Rzeszów"
     }
   },
@@ -99,7 +99,7 @@
     "model": "webapp.TestingFacility",
     "pk": 11,
     "fields": {
-      "name": "WIJHRS w Szczecinie",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Szczecinie",
       "address": "ul. Jana Matejki 6b/211, 71-615 Szczecin"
     }
   },
@@ -107,7 +107,7 @@
     "model": "webapp.TestingFacility",
     "pk": 12,
     "fields": {
-      "name": "WIJHRS w Warszawie",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Warszawie",
       "address": "ul. Marszałkowska 115, 00-102 Warszawa"
     }
   },
@@ -115,16 +115,31 @@
     "model": "webapp.TestingFacility",
     "pk": 13,
     "fields": {
-      "name": "WIJHRS we Wrocławiu",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych we Wrocławiu",
       "address": "ul. Ofiar Oświęcimskich 12, 50-069 Wrocław"
     }
-  },
+  }
   {
     "model": "webapp.TestingFacility",
     "pk": 14,
     "fields": {
-      "name": "WIJHRS w Zielonej Górze",
+      "name": "Wojewódzki Inspektorat Jakości Handlowej Artykułów Rolno-Spożywczych w Zielonej Górze",
       "address": "ul. Bohaterów Westerplatte 11, 65-034 Zielona Góra"
     }
   }
 ]
+// in the chrome debug console
+//const array = [];
+//
+//$$('.editor-content > div > *').forEach(element => {
+//    const header = element.querySelector('strong')
+//    if(header != null && header.innerText.includes('Inspektorat'))
+//    {
+//        const entryArray = element.innerText.split('\n').filter(entry => entry != '')
+//        const name = entryArray[0]
+//        const address = entryArray.slice(1, 3).join(', ')
+//        array.push({name, address})
+//        console.log(name, address)
+//    }
+//});
+//JSON.stringify(array);

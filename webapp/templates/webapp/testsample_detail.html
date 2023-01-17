@@ -8,7 +8,7 @@
 {% block content %}
     <div>
         <h1>Próbka #{{ testsample.id }} </h1>
-        <h4>Dodano: 2022-21-30</h4>
+        <h4>Dodano: {{ testsample.created_at }}</h4>
         <div><span class="fw-bold">Kod próbki: </span> {{ testsample.sample_code }}</div>
         <div><span class="fw-bold">Placówka źródłowa:</span> {{ testsample.source_facility }}</div>
         <div><span class="fw-bold">Nazwa klienta:</span> {{ testsample.customer_name }}</div>
@@ -19,7 +19,7 @@
             <div>❗<span class="fw-bold">Komentarz dla daty przydatności: </span>{{ testsample.admission_date }}</div>
         {% endif %}
         <div><span class="fw-bold">Data końca badań:</span> {{ testsample.test_end_date }}</div>
-        <div><span class="fw-bold">Rozmiar próbki:</span> {{ testsample.test_end_date }}</div>
+        <div><span class="fw-bold">Rozmiar próbki:</span> {{ testsample.sample_size }}</div>
         <div><span class="fw-bold">Analiza odwoławcza:</span> {{ testsample.appeal_test|yesno:"Tak,Nie," }}</div>
         <div><span class="fw-bold">Stan próbki:</span> {{ testsample.sample_condition }}</div>
         <div><span class="fw-bold">Rodzaj próbki:</span> {{ testsample.sample_type }}</div>
@@ -68,8 +68,11 @@
                     <td></td>
                     <td></td>
                     <td>
-                        {% bootstrap_button "Zobacz raport" href=detail_url extra_classes="btn-sm" %}
-                        {% bootstrap_button "Pobierz" href=detail_url extra_classes="btn-sm" %}
+                        {% url 'report_update' report.id as update_url %}
+                        {% url 'report_download' report.id as download_url %}
+
+                        {% bootstrap_button "Zobacz raport" href=update_url extra_classes="btn-sm" %}
+                        {% bootstrap_button "Pobierz" href=download_url extra_classes="btn-sm" %}
 
                     </td>
                     </tbody>
@@ -111,7 +114,7 @@
                         </td>
                         <td>{{ entry.test_result }}</td>
                         <td>
-                            {% url 'test_label_detail' entry.pk as detail_url %}
+                            {% url 'testlabel_detail' entry.pk as detail_url %}
                             {% bootstrap_button "Szczegóły" href=detail_url extra_classes="btn-sm" %}
                         </td>
                     </tr>

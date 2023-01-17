@@ -45,7 +45,7 @@ class TestSample(ModelWithTimestamp):
     def serialize(self):
         model_fields = [field.name for field in self._meta.get_fields(include_parents=True, include_hidden=False)]
 
-        exclude = ['testlabel']
+        exclude = ['testlabel', 'report']
         data = []
         for field in model_fields:
             if field in exclude:
