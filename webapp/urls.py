@@ -35,7 +35,8 @@ urlpatterns = [
     # path('test-label/add', views.TestLabelCreateView.as_view())
 
     # summary
-    path('summary-report/', views.SummaryReportView.as_view(), name="summary_form"),
+    path('summary-report/', views.SummaryReportFormView.as_view(), name="summary_form"),
+    path('summary-report/download', views.SummaryReportDownloadView.as_view(), name="summary_download"),
 
 ]
 

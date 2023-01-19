@@ -52,7 +52,8 @@
             </div>
             <div class="pt-5">
                 <p>Dane od: {{ date_range.from_date|date:"Y/m/d" }} do: {{ date_range.to_date|date:"Y/m/d" }}</p>
-                {% bootstrap_button "Pobierz" extra_classes="float-end" %}
+                {% url 'summary_download' as download_url %}
+                {% bootstrap_button "Pobierz" button_type="link" href=download_url extra_classes="float-end" %}
             </div>
 
         </div>

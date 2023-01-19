@@ -10,7 +10,7 @@ from webapp.models import TestSample, sample_type_choices
 from webapp.utils.decorators import parse_timestamp_range
 
 
-class SummaryReportView(FormView):
+class SummaryReportFormView(FormView):
     template_name = "webapp/summary_report_form.html"
     form_class = SummaryReportForm
 
@@ -36,16 +36,15 @@ class SummaryReportView(FormView):
 
             resolution = resolve(request.path_info)  # simulate resolving the request
 
-            reversed = reverse(resolution.url_name, kwargs=resolution.kwargs)  # create a base url
+            reversed_url = reverse(resolution.url_name, kwargs=resolution.kwargs)  # create a base url
 
-            reversed += '?' + urllib.parse.urlencode(filter_params)
+            reversed_url += '?' + urllib.parse.urlencode(filter_params)
 
-            return HttpResponseRedirect(reversed)
+            return HttpResponseRedirect(reversed_url)
         else:
             return super().get(request)
 
     def get_data(self, filter_params):
-
         testsample_filtered = TestSample.objects.filter(
             admission_date__range=[filter_params['from_date'], filter_params['to_date']]).all()
 
@@ -61,6 +60,10 @@ class SummaryReportView(FormView):
                 if choice[0] == key:
                     entry['sample_type'] = choice[1]
                     break
+
+        # save for later
+        self.request.session['summary_range'] = [str(filter_params['from_date'].date().isoformat()),
+                                                 str(filter_params['to_date'].date().isoformat())]
 
         return [filter_params, testsample_data, total_testsample]
 
