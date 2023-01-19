@@ -6,6 +6,7 @@ from django.urls import reverse
 from webapp.forms import TestSampleForm
 from webapp.models import TestSample, TestingFacility
 
+
 class TestSampleCreateViewTestCase(TestCase):
     def setUp(self):
         self.facility = TestingFacility.objects.create(
@@ -14,11 +15,11 @@ class TestSampleCreateViewTestCase(TestCase):
         )
 
     def test_view_uses_correct_template(self):
-        response = self.client.get(reverse('test_sample_create'))
+        response = self.client.get(reverse('testsample_create'))
         self.assertTemplateUsed(response, 'webapp/testsample_form.html')
 
     def test_view_uses_correct_form(self):
-        response = self.client.get(reverse('test_sample_create'))
+        response = self.client.get(reverse('testsample_create'))
         self.assertIsInstance(response.context['form'], TestSampleForm)
 
     def test_view_creates_new_test_sample(self):
@@ -35,12 +36,11 @@ class TestSampleCreateViewTestCase(TestCase):
             'appeal_test': False,
             'sample_condition': 'Good',
             'sample_type': 'T1',
-            'sample_method': 'T1',
+            'sample_method': 'T1'
         };
 
         self.assertTrue(TestSampleForm(data).is_valid())
-        response = self.client.post(reverse('test_sample_create'), data=data)
-
+        response = self.client.post(reverse('testsample_create'), data=data)
 
         # Django returns the redirect to the Details page of newly created entity
         self.assertEqual(response.status_code, 302)

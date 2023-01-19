@@ -29,18 +29,18 @@ class TestSampleDetailViewTestCase(TestCase):
         )
 
     def test_view_uses_correct_template(self):
-        response = self.client.get(reverse('test_sample_detail', args=[self.test_sample.id]))
+        response = self.client.get(reverse('testsample_detail', args=[self.test_sample.id]))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'webapp/testsample_detail.html')
 
     def test_view_passes_correct_data_to_template(self):
-        response = self.client.get(reverse('test_sample_detail', args=[self.test_sample.id]))
+        response = self.client.get(reverse('testsample_detail', args=[self.test_sample.id]))
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context_data['testsample'], self.test_sample)
 
     def test_view_404_for_invalid_test_sample(self):
-        response = self.client.get(reverse('test_sample_detail', args=[9999]))
+        response = self.client.get(reverse('testsample_detail', args=[9999]))
 
         self.assertEqual(response.status_code, 404)
