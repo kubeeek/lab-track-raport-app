@@ -5,6 +5,7 @@
     "fields": {
       "test_sample": 1,
       "is_done": false,
+      "value": "10.5e",
       "parameter_name": "Parametr X",
       "labeling": "Brak",
       "specification": "Specyfikacja 1",

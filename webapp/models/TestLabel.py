@@ -15,6 +15,7 @@ class TestLabel(ModelWithTimestamp):
     is_done = models.BooleanField(default=False)
     parameter_name = models.CharField(max_length=128)
     labeling = models.CharField(max_length=255)
+    value = models.CharField(max_length=255)
     specification = models.CharField(max_length=255)
     # rozporządzenie ?
     regulation = models.CharField(max_length=255)

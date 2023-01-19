@@ -15,6 +15,7 @@ class TestLabelForm(ModelForm):
             'test_sample': "Próbka",
             'is_done': "Badanie wykonane",
             'parameter_name': 'Nazwa parametru',
+            'value': "Wartość (odżywcza)",
             'labeling': 'Oznakowanie',
             'specification': 'Specyfikacja',
             'regulation': 'Rozporządzenie',
