@@ -14,7 +14,8 @@
       "start_date": "2023-01-03",
       "end_date": "2023-01-04",
       "method_status": "1",
-      "margin": "Brak",
+      "uncertainty": "Brak",
+      "type": "FC",
       "LOD": "2.2",
       "LOQ": "3.3",
       "created_at": "2038-01-19 03:14:07+01:00"

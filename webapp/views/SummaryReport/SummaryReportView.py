@@ -1,12 +1,14 @@
 import urllib
 
+from .common import get_data_for_report, preprocess_data
+
 from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.urls import reverse, resolve
 from django.views.generic import FormView
 
 from webapp.forms import SummaryReportForm
-from webapp.models import TestSample, sample_type_choices
+from webapp.models import TestSample, sample_type_choices, TestLabel, label_type_choices
 from webapp.utils.decorators import parse_timestamp_range
 
 
@@ -45,27 +47,15 @@ class SummaryReportFormView(FormView):
             return super().get(request)
 
     def get_data(self, filter_params):
-        testsample_filtered = TestSample.objects.filter(
-            admission_date__range=[filter_params['from_date'], filter_params['to_date']]).all()
+        [testsample_data, total_samples, testlabel_data, total_labels] = get_data_for_report(filter_params)
 
-        testsample_data = list(
-            testsample_filtered.values('sample_type').annotate(dcount=Count('sample_type')).order_by())
-
-        total_testsample = testsample_filtered.count()
-
-        # make human readable labels
-        for entry in testsample_data:
-            key = entry['sample_type']
-            for choice in sample_type_choices:
-                if choice[0] == key:
-                    entry['sample_type'] = choice[1]
-                    break
+        preprocess_data([(testsample_data, sample_type_choices), (testlabel_data, label_type_choices)])
 
         # save for later
         self.request.session['summary_range'] = [str(filter_params['from_date'].date().isoformat()),
                                                  str(filter_params['to_date'].date().isoformat())]
 
-        return [filter_params, testsample_data, total_testsample]
+        return [filter_params, testsample_data, total_samples, testlabel_data, total_labels]
 
     @parse_timestamp_range()
     def get_context_data(self, filter_params, **kwargs):
@@ -79,6 +69,8 @@ class SummaryReportFormView(FormView):
         context['date_range'] = data[0]
         context['test_samples'] = data[1]
         context['total_samples'] = data[2]
+        context['test_labels'] = data[3]
+        context['total_labels'] = data[4]
         context['render_data'] = True
 
         return context

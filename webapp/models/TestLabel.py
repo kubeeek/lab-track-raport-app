@@ -3,6 +3,11 @@ from django.db import models
 from webapp.models import TestSample
 from webapp.models.common import ModelWithTimestamp
 
+label_type_choices = [
+    ('FC', 'Fizykochemiczne'),
+    ('OG', 'Organoleptyczne')
+]
+
 
 class TestLabel(ModelWithTimestamp):
     test_sample = models.ForeignKey(TestSample, on_delete=models.PROTECT, editable=False, default=None)
@@ -17,8 +22,10 @@ class TestLabel(ModelWithTimestamp):
     test_result = models.CharField(max_length=255)
     start_date = models.DateField()
     end_date = models.DateField()
+    # label type
+    type = models.CharField(max_length=10, choices=label_type_choices)
     method_status = models.CharField(max_length=255)
-    margin = models.CharField(max_length=255)
+    uncertainty = models.CharField(max_length=255)
     LOD = models.CharField(max_length=255)
     LOQ = models.CharField(max_length=255)
 

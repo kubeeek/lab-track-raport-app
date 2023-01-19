@@ -22,7 +22,7 @@ class TestSampleForm(ModelForm):
             'appeal_test': "Analiza odwoławcza",
             'control_type': "Rodzaj kontroli",
             'customer_name': "Nazwa klienta",
-            'sample_type': "Rodzaj próbki",
+            'type': "Rodzaj próbki",
             'sample_condition': "Stan próbki",
             'sample_method': "Metoda pobrania próbki"
         }

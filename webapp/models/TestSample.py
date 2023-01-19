@@ -24,7 +24,9 @@ class TestSample(ModelWithTimestamp):
         max_length=128,
         default="Bez zastrzezeń"
     )
-    sample_type = models.CharField(
+
+    # sample type
+    type = models.CharField(
         max_length=3,
         choices=sample_type_choices,
         default='T2'

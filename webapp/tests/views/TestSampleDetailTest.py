@@ -24,7 +24,7 @@ class TestSampleDetailViewTestCase(TestCase):
             sample_size='100g',
             appeal_test=False,
             sample_condition='Bez zastrzezeń',
-            sample_type='T1',
+            type='T1',
             sample_method='T1',
         )
 

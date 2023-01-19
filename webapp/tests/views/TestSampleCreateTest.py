@@ -35,7 +35,7 @@ class TestSampleCreateViewTestCase(TestCase):
             'sample_size': "1 lb",
             'appeal_test': False,
             'sample_condition': 'Good',
-            'sample_type': 'T1',
+            'type': 'T1',
             'sample_method': 'T1'
         };
 
@@ -57,5 +57,5 @@ class TestSampleCreateViewTestCase(TestCase):
         self.assertEqual(test_sample.sample_size, '1 lb')
         self.assertEqual(test_sample.appeal_test, False)
         self.assertEqual(test_sample.sample_condition, 'Good')
-        self.assertEqual(test_sample.sample_type, 'T1')
+        self.assertEqual(test_sample.type, 'T1')
         self.assertEqual(test_sample.sample_method, 'T1')

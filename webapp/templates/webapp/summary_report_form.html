@@ -30,7 +30,7 @@
                         {% for entry in test_samples %}
                             <tr>
                                 <td class="fw-bold">
-                                    {{ entry.sample_type }}:
+                                    {{ entry.type }}:
                                 </td>
                                 <td>
                                     {{ entry.dcount }}
@@ -48,6 +48,26 @@
                 </div>
                 <div class="col">
                     <h2>Wykonane badania:</h2>
+                    <table class="table">
+                        <tbody>
+                        {% for entry in test_labels %}
+                            <tr>
+                                <td class="fw-bold">
+                                    {{ entry.type }}:
+                                </td>
+                                <td>
+                                    {{ entry.dcount }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td class="fw-bold">
+                                <span class="float-end">Ogółem:</span>
+                            </td>
+                            <td>{{ total_labels }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="pt-5">
