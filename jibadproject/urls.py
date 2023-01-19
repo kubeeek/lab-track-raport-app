@@ -24,3 +24,5 @@ urlpatterns = [
     path('', include('webapp.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
+
+handler404 = "webapp.views.ExceptionHandlerViews.page_not_found_view"

@@ -1,14 +1,22 @@
 {% extends 'webapp/common/layout.base.html' %}
 {% load django_bootstrap5 %}
 
+{% block title %}
+    {% if url_name == 'testlabel_create' %}
+        Dodaj oznaczenie
+    {% elif url_name == 'testlabel_update' %}
+        Edytuj oznaczenie
+    {% endif %}
+{% endblock %}
+
 {% block head %}
     {{ form.media }}
 {% endblock %}
 
 {% block content %}
-    {% if 'update' in request.path %}
+    {% if url_name == 'testlabel_update' %}
         <h1>Edytowanie badania</h1>
-    {% else %}
+    {% elif url_name == 'testlabel_create' %}
         <h1>Dodawanie badania dla próbki #{{ parent.id }}</h1>
     {% endif %}
 
@@ -18,7 +26,7 @@
 
         <div class="d-flex justify-content-end">
             {% bootstrap_button "Zatwierdź" button_type="submit" %}
-            {% url 'test_sample_detail' testlabel.test_sample as back_url %}
+            {% url 'testsample_detail' testlabel.test_sample as back_url %}
             {% bootstrap_button "Odrzuć i cofnij" button_type="link" extra_classes="btn-warning ms-1" href=back_url %}
         </div>
     </form>

@@ -1,7 +1,15 @@
 from django.db import models
 
 from webapp.models import TestingFacility
-class TestSample(models.Model):
+from webapp.models.common import ModelWithTimestamp
+
+sample_type_choices = [
+    ('T1', 'Type 1'),
+    ('T2', 'Type 2'),
+]
+
+
+class TestSample(ModelWithTimestamp):
     sample_code = models.CharField(max_length=16)
     source_facility = models.ForeignKey(TestingFacility, on_delete=models.PROTECT, default=None)
     customer_name = models.CharField(max_length=32)
@@ -16,10 +24,6 @@ class TestSample(models.Model):
         max_length=128,
         default="Bez zastrzezeń"
     )
-    sample_type_choices = [
-        ('T1', 'Type 1'),
-        ('T2', 'Type 2'),
-    ]
     sample_type = models.CharField(
         max_length=3,
         choices=sample_type_choices,
@@ -30,23 +34,25 @@ class TestSample(models.Model):
         choices=sample_type_choices,
         default='T2'
     )
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['id']
+        get_latest_by = ['created_at']
+
     def get_absolute_url(self):
         return "/test-sample/%i/" % self.id
 
     def serialize(self):
         model_fields = [field.name for field in self._meta.get_fields(include_parents=True, include_hidden=False)]
 
-        exclude = ['testlabel']
+        exclude = ['testlabel', 'report']
         data = []
         for field in model_fields:
             if field in exclude:
                 continue
             data.append(self.serializable_value(field))
         return data
-
 
     def __str__(self):
         return f'Próbka {self.sample_code} nr. {self.id}'

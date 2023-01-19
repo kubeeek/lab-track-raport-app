@@ -24,9 +24,6 @@ SECRET_KEY = 'django-insecure-yc$@n#+hb4fa#r5^5zc43d0z154-2!n*)*hmloc&^3=ofj+=tf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# TODO Change before deploying to a production
-ALLOWED_HOSTS = ['*']
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,7 +54,7 @@ MIDDLEWARE = [
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
-    "172.21.0.1"
+    "172.19.0.1"
     # ...
 ]
 

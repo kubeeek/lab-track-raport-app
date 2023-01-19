@@ -1,0 +1,60 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    Generuj raport czasowy
+{% endblock %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>Podsumowanie</h1>
+    <p>Wybierz przedział czasowy danych.</p>
+    {% url 'summary_form' as submit_url %}
+
+    <form action="{{ submit_url }}" method="get">
+        {% bootstrap_form form %}
+        {% bootstrap_button "Eksportuj" %}
+    </form>
+
+    {% if render_data %}
+        <div class="pt-4">
+            <div class="d-flex flex-row row justify-content-between">
+                <div class="col">
+                    <h2>Zgromadzone próbki testowe:</h2>
+                    <table class="table">
+                        <tbody>
+                        {% for entry in test_samples %}
+                            <tr>
+                                <td class="fw-bold">
+                                    {{ entry.sample_type }}:
+                                </td>
+                                <td>
+                                    {{ entry.dcount }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td class="fw-bold">
+                                <span class="float-end">Ogółem:</span>
+                            </td>
+                            <td>{{ total_samples }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <h2>Wykonane badania:</h2>
+                </div>
+            </div>
+            <div class="pt-5">
+                <p>Dane od: {{ date_range.from_date|date:"Y/m/d" }} do: {{ date_range.to_date|date:"Y/m/d" }}</p>
+                {% bootstrap_button "Pobierz" extra_classes="float-end" %}
+            </div>
+
+        </div>
+    {% endif %}
+{% endblock %}

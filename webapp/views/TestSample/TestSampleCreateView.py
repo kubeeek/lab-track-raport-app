@@ -6,6 +6,7 @@ from webapp.forms import TestSampleForm
 from webapp.models import TestSample
 from webapp.views.common import OperationSuccessMessageViewMixin
 
+
 class TestSampleCreateView(OperationSuccessMessageViewMixin, CreateView):
     model = TestSample
     form_class = TestSampleForm
@@ -19,10 +20,5 @@ class TestSampleCreateView(OperationSuccessMessageViewMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(TestSampleCreateView, self).get_context_data(**kwargs)
-
-        # if self.request.POST:
-        #     context['test_sample_formset'] = TestSampleFormset(self.request.POST)
-        # else:
-        #     context['test_sample_formset'] = TestSampleFormset()
 
         return context

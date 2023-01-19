@@ -14,3 +14,5 @@ There are two ways to run the app: using Docker or locally on your machine.
 4. Migrate: `python manage.py migrate`
 5. Run the app: `python manage.py runserver 0.0.0.0:8000`
 
+## Running tests 
+1. Type in the project root: ``python -Wa manage.py test .\webapp\tests\ --settings=jibadproject.settings_test``

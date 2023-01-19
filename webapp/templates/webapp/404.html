@@ -1,0 +1,15 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    Błąd 404
+{% endblock %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <h1>Błąd 404</h1>
+    <p>Zasób nie znaleziony.</p>
+{% endblock %}

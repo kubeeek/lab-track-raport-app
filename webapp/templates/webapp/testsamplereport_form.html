@@ -1,0 +1,35 @@
+{% extends 'webapp/common/layout.base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    Generuj raport
+{% endblock %}
+
+{% block head %}
+    {{ form.media }}
+
+{% endblock %}
+
+{% block content %}
+
+    <h1>Generowanie raportu</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <div class="d-flex justify-content-end">
+
+        </div>
+        {{ authors_formset.management_form }}
+        {% for form in authors_formset %}
+            <h3>Autor {{ forloop.counter }}</h3>
+            {% bootstrap_form form %}
+        {% endfor %}
+
+        <div class="d-flex justify-content-end">
+            {% bootstrap_button "Zatwierdź" button_type="submit" %}
+            {% url 'testsample_detail' parent.pk as back_url %}
+            {% bootstrap_button "Odrzuć i cofnij" button_type="link" extra_classes="btn-warning ms-1" href=back_url %}
+        </div>
+    </form>
+{% endblock %}
