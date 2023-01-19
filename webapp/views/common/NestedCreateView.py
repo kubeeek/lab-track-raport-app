@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView
@@ -16,6 +17,7 @@ class NestedCreateView(CreateView):
         try:
             context = super().get_context_data(**kwargs)
         except TestSample.DoesNotExist:
+            messages.error(self.request, "Próbka została w międzyczasie usunięta.")
             raise Http404
 
         context['parent'] = get_object_or_404(self.parentModel, pk=self.kwargs['pk'])

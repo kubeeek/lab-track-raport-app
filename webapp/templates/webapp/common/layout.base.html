@@ -6,7 +6,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>django-bootstrap-datepicker-plus with Bootstrap 5 - {{ title_text }}</title>
+    {% with request.resolver_match.url_name as url_name %}
+        <title>
+            Lab Track -
+            {% block title %}{% endblock %}
+        </title>
+    {% endwith %}
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js"></script>
 
     {% bootstrap_css %}
@@ -18,13 +24,14 @@
 </head>
 
 <body class="mb-4">
-    {% include 'webapp/common/layout.navbar.html' %}
-    <div class="container-sm col-md-6">
-        {% bootstrap_messages %}
-    </div>
-    <div class="container-sm col-md-7">
-
+{% include 'webapp/common/layout.navbar.html' %}
+<div class="container-sm col-md-6">
+    {% bootstrap_messages %}
+</div>
+<div class="container-sm col-md-7">
+    {% with request.resolver_match.url_name as url_name %}
         {% block content %}{% endblock %}
-    </div>
+    {% endwith %}
+</div>
 
 </body>

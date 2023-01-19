@@ -1,14 +1,22 @@
 {% extends 'webapp/common/layout.base.html' %}
 {% load django_bootstrap5 %}
 
+{% block title %}
+    {% if url_name == 'testlabel_create' %}
+        Dodaj oznaczenie
+    {% elif url_name == 'testlabel_update' %}
+        Edytuj oznaczenie
+    {% endif %}
+{% endblock %}
+
 {% block head %}
     {{ form.media }}
 {% endblock %}
 
 {% block content %}
-    {% if 'update' in request.path %}
+    {% if url_name == 'testlabel_update' %}
         <h1>Edytowanie badania</h1>
-    {% else %}
+    {% elif url_name == 'testlabel_create' %}
         <h1>Dodawanie badania dla próbki #{{ parent.id }}</h1>
     {% endif %}
 

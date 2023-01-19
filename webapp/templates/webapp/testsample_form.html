@@ -1,6 +1,15 @@
 {% extends 'webapp/common/layout.base.html' %}
 {% load django_bootstrap5 %}
 
+{% block title %}
+    {% if url_name == 'testsample_create' %}
+        Dodaj próbkę
+    {% elif url_name == 'testsample_update' %}
+        Edytuj próbkę
+    {% endif %}
+{% endblock %}
+
+
 {% block head %}
     {{ form.media }}
     <script>
@@ -17,7 +26,13 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Dodawanie próbki</h1>
+    <h1>
+        {% if url_name == 'testsample_create' %}
+            Dodawanie próbki
+        {% elif url_name == 'testsample_update' %}
+            Edytowanie próbki
+        {% endif %}
+    </h1>
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
