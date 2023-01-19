@@ -3,6 +3,11 @@ from django.db import models
 from webapp.models import TestingFacility
 from webapp.models.common import ModelWithTimestamp
 
+sample_type_choices = [
+    ('T1', 'Type 1'),
+    ('T2', 'Type 2'),
+]
+
 
 class TestSample(ModelWithTimestamp):
     sample_code = models.CharField(max_length=16)
@@ -19,10 +24,6 @@ class TestSample(ModelWithTimestamp):
         max_length=128,
         default="Bez zastrzezeń"
     )
-    sample_type_choices = [
-        ('T1', 'Type 1'),
-        ('T2', 'Type 2'),
-    ]
     sample_type = models.CharField(
         max_length=3,
         choices=sample_type_choices,

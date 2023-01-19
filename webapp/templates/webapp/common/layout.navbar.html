@@ -4,7 +4,8 @@
             {% with request.resolver_match.url_name as url_name %}
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link {% if url_name == 'testsample_create' %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if url_name == 'testsample_create' %}active{% endif %}"
+                           aria-current="page"
                            href="{% url 'testsample_create' %}">Dodaj próbkę</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -15,11 +16,9 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item {% if url_name == 'testsample_list' %}active{% endif %}"
                                    href="{% url 'testsample_list' %}">Próbki</a></li>
-                            <li><a class="dropdown-item"
-                                   href="#">Raporty</a></li>
                         </ul>
                     </li>
-                 <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             Eksportuj
@@ -30,6 +29,11 @@
                             <li><a class="dropdown-item"
                                    href="{% url 'testsample_export' %}">Próbki</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if url_name == 'summary_form' %}active{% endif %}"
+                           aria-current="page"
+                           href="{% url 'summary_form' %}">Raporty kwartalne</a>
                     </li>
                 </ul>
             {% endwith %}
