@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 from webapp.models import TestingFacility
@@ -14,10 +16,10 @@ class TestSample(ModelWithTimestamp):
     source_facility = models.ForeignKey(TestingFacility, on_delete=models.PROTECT, default=None)
     customer_name = models.CharField(max_length=32)
     description = models.TextField()
-    admission_date = models.DateField()
+    admission_date = models.DateField(default=datetime.date.today)
     expiration_date = models.DateField()
     expiration_date_optional = models.TextField(default=None, null=True, blank=True)
-    test_end_date = models.DateField()
+    test_end_date = models.DateField(default=datetime.date.today)
     sample_size = models.CharField(max_length=32)
     appeal_test = models.BooleanField()
     sample_condition = models.CharField(
