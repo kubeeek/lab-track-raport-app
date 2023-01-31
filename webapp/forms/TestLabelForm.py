@@ -24,7 +24,8 @@ class TestLabelForm(ModelForm):
             'start_date': "Data rozpoczęcia",
             'end_date': "Data zakończenia",
             'method_status': "Status metody",
-            'margin': 'Niepewność'
+            'uncertainty': 'Niepewność',
+            'type': 'Rodzaj badania'
         }
 
         widgets = {
