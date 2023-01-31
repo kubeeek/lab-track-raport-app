@@ -5,6 +5,7 @@ from django.db import models
 from webapp.models import TestingFacility
 from webapp.models.common import ModelWithTimestamp
 
+# moved outside class because it needs to be reused somewhere else
 sample_type_choices = [
     ('T1', 'Type 1'),
     ('T2', 'Type 2'),
@@ -33,12 +34,16 @@ class TestSample(ModelWithTimestamp):
         choices=sample_type_choices,
         default='T2'
     )
+
+    sample_method_choices = [
+        ('T1', 'Type 1'),
+        ('T2', 'Type 2'),
+    ]
     sample_method = models.CharField(
         max_length=128,
         choices=sample_type_choices,
         default='T2'
     )
-    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['id']

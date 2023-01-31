@@ -7,6 +7,7 @@ from django.db.models import Q
 from webapp.models import TestSample
 from webapp.models.common import ModelWithTimestamp
 
+# moved outside class because it needs to be reused somewhere else
 label_type_choices = [
     ('FC', 'Fizykochemiczne'),
     ('OG', 'Organoleptyczne')
@@ -38,7 +39,7 @@ class TestLabel(ModelWithTimestamp):
         return "/test-label/%i/" % self.id
 
     def clean(self):
-        if not self.regulation or not self.specification or not self.labeling:
+        if not self.regulation and not self.specification and not self.labeling:
             raise ValidationError(
                 "Conajmniej jedno z pól (specyfikacja, rozporządzenie, oznakowanie) musi zostać uzupełnione."
             )
