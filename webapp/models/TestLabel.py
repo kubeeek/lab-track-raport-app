@@ -38,12 +38,6 @@ class TestLabel(ModelWithTimestamp):
     def get_absolute_url(self):
         return "/test-label/%i/" % self.id
 
-    def clean(self):
-        if not self.regulation and not self.specification and not self.labeling:
-            raise ValidationError(
-                "Conajmniej jedno z pól (specyfikacja, rozporządzenie, oznakowanie) musi zostać uzupełnione."
-            )
-
     def serialize(self):
         model_fields = [field.name for field in self._meta.get_fields(include_parents=True, include_hidden=False)]
 
