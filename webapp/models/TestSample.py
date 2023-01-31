@@ -14,7 +14,7 @@ sample_type_choices = [
 class TestSample(ModelWithTimestamp):
     sample_code = models.CharField(max_length=16)
     source_facility = models.ForeignKey(TestingFacility, on_delete=models.PROTECT, default=None)
-    customer_name = models.CharField(max_length=32)
+    customer_name = models.CharField(max_length=255)
     description = models.TextField()
     admission_date = models.DateField(default=datetime.date.today)
     expiration_date = models.DateField()
