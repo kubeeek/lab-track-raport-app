@@ -32,3 +32,11 @@ class TestLabel(ModelWithTimestamp):
 
     def get_absolute_url(self):
         return "/test-label/%i/" % self.id
+
+    def serialize(self):
+        model_fields = [field.name for field in self._meta.get_fields(include_parents=True, include_hidden=False)]
+
+        data = []
+        for field in model_fields:
+            data.append(self.serializable_value(field))
+        return data
