@@ -27,7 +27,6 @@ class TestSampleReportDownloadView(DetailView):
                 'supplier_name':test_report.supplier_name,
                 'receiver_name': test_report.receiver_name,
                 'contract_id': test_report.contract_id,
-                'admission_date': related_test_sample.admission_date,
                 'expiration_date': related_test_sample.expiration_date,
                 'sample_id': related_test_sample.id,
                 'sample_code': related_test_sample.sample_code,
