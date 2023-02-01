@@ -12,6 +12,7 @@ from webapp.views.common import NestedCreateView
 class TestSampleReportCreateView(NestedCreateView):
     model = TestSampleReport
     form_class = TestSampleReportForm
+    template_name = "webapp/testsamplereport_form.html"
 
     parentModel = TestSample
 

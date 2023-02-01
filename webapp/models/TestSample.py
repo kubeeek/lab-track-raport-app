@@ -1,8 +1,11 @@
+import datetime
+
 from django.db import models
 
 from webapp.models import TestingFacility
 from webapp.models.common import ModelWithTimestamp
 
+# moved outside class because it needs to be reused somewhere else
 sample_type_choices = [
     ('T1', 'Type 1'),
     ('T2', 'Type 2'),
@@ -12,12 +15,12 @@ sample_type_choices = [
 class TestSample(ModelWithTimestamp):
     sample_code = models.CharField(max_length=16)
     source_facility = models.ForeignKey(TestingFacility, on_delete=models.PROTECT, default=None)
-    customer_name = models.CharField(max_length=32)
+    customer_name = models.CharField(max_length=255)
     description = models.TextField()
-    admission_date = models.DateField()
+    admission_date = models.DateField(default=datetime.date.today)
     expiration_date = models.DateField()
     expiration_date_optional = models.TextField(default=None, null=True, blank=True)
-    test_end_date = models.DateField()
+    test_end_date = models.DateField(default=datetime.date.today)
     sample_size = models.CharField(max_length=32)
     appeal_test = models.BooleanField()
     sample_condition = models.CharField(
@@ -31,12 +34,16 @@ class TestSample(ModelWithTimestamp):
         choices=sample_type_choices,
         default='T2'
     )
+
+    sample_method_choices = [
+        ('T1', 'Type 1'),
+        ('T2', 'Type 2'),
+    ]
     sample_method = models.CharField(
         max_length=128,
         choices=sample_type_choices,
         default='T2'
     )
-    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['id']

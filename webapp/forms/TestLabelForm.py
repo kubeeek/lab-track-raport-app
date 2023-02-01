@@ -1,15 +1,30 @@
 from bootstrap_datepicker_plus.widgets import DatePickerInput
+from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 
 from webapp.models import TestLabel
-import django.forms as forms
+
 
 class TestLabelForm(ModelForm):
+    def clean(self):
+        regulation = self.cleaned_data.get('regulation')
+        specification = self.cleaned_data.get('specification')
+        labeling = self.cleaned_data.get('labeling')
+
+        error_msg = "Conajmniej jedno z pól (specyfikacja, rozporządzenie, oznakowanie) musi zostać uzupełnione."
+
+        if not regulation and not specification and not labeling:
+            raise ValidationError(
+                {
+                    "regulation": error_msg,
+                    "specification": error_msg,
+                    "labeling": error_msg,
+                },
+            )
 
     class Meta:
         model = TestLabel
         fields = '__all__'
-
 
         labels = {
             'test_sample': "Próbka",
@@ -24,11 +39,11 @@ class TestLabelForm(ModelForm):
             'start_date': "Data rozpoczęcia",
             'end_date': "Data zakończenia",
             'method_status': "Status metody",
-            'margin': 'Niepewność'
+            'uncertainty': 'Niepewność',
+            'type': 'Rodzaj badania'
         }
 
         widgets = {
             'start_date': DatePickerInput(),
             'end_date': DatePickerInput(),
         }
-
