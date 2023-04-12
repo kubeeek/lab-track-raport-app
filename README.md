@@ -1,3 +1,6 @@
+# About the app
+An MVC application that has been developed as part of a Python course, modeled after an existing system used in Provincial Inspectorates of Trade Quality. The application enables tracking of tests and generating reports in .docx and .csv files.
+
 # Running the app
 ## Introduction
 There are two ways to run the app: using Docker or locally on your machine.
